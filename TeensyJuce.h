@@ -1,3 +1,6 @@
+#ifndef teensyjuce_h_
+#define teensyjuce_h_
+
 #include <Audio.h>
 
 class TEENSY_AUDIO_STREAM_WRAPPER : public AudioStream
@@ -58,3 +61,4 @@ public:
     virtual int                     num_input_channels() const = 0;
     virtual int                     num_output_channels() const = 0;
 };
+#endif

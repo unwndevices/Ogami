@@ -1,6 +1,7 @@
 #include <Audio.h>
 #include <ResponsiveAnalogRead.h>
 #include <Bounce.h>
+#include <ArduinoJson.h>
 #include "config.h"
 #include "waveforms.h"
 #include "src/effect_glitchdelay/effect_glitchdelay.h"
@@ -56,10 +57,82 @@ AudioConnection patchCord26(L_gain, 0, out, 0);
 AudioConnection patchCord27(R_gain, 0, out, 1);
 AudioControlSGTL5000 sgtl5000;           //xy=672,1106
 
-
+ String UNWNJSONAudioLibrary = "   {\
+        \"object\": \"null\",\
+        \"classType\": \"AudioMixer4\",\
+        \"name\": \"feedback_mixer\",\
+        \"config\": {\
+            \"sampleRate\": [\
+                [0, 139],\
+                [0, 139]\
+            ],\
+            \"bits\": [\
+                [1, 119],\
+                [1, 119]\
+            ],\
+            \"shape\": [\
+                [1, 119,13,45,67,89],\
+                [1, 119,13,45,67,89]\
+            ],\
+            \"gain\": [\
+                [1, 3],\
+                [1, 1]\
+            ],\
+            \"limit\": [\
+                [1, 3,4],\
+                [1, 1,2]\
+            ],\
+            \"compression\": [\
+                [1, 2119],\
+                [1, 3119],\
+                [1, 4119],\
+                [1, 5119],\
+                [1, 6119]\
+            ],\
+            \"autoMakeupGain\": [\
+                [1, 119],\
+                [1, 119]\
+            ],\
+            \"frequency\": [\
+                [1, 119],\
+                [1, 119]\
+            ],\
+            \"resonance\": [\
+                [1, 119],\
+                [1, 119]\
+            ],\
+            \"octaveControl\": [\
+                [1, 119],\
+                [1, 119]\
+            ]\
+        }\
+    }";
+  
 
 
 void setup() {
+	Serial.begin(9600);
+
+
+	//Load UNWN Audio Configuration
+
+
+	DynamicJsonDocument UNWNAudioJSON(1024);
+
+
+ 
+  deserializeJson(UNWNAudioJSON, UNWNJSONAudioLibrary);
+  JsonObject UNWNAudioLibrary = UNWNAudioJSON.as<JsonObject>();
+
+
+
+Serial.println(UNWNAudioLibrary.size());
+
+
+
+
+
+
 	// patchA1.disconnect(); //disconnect patch cables
 	AudioMemory(32);
 	setupAudio();
