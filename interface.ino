@@ -5,6 +5,12 @@
 #include "effect_glitchdelay.h"
 #include "src/effect_dynamics/effect_dynamics.h"
 
+void setupUnwn(){
+	setupPins();
+	setupAnalog();
+	setupDigital();
+}
+
 void setupPins() {
 	pinMode(S0, OUTPUT);
 	pinMode(S1, OUTPUT);
@@ -15,6 +21,18 @@ void setupPins() {
 	pinMode(PINarcade, INPUT);
 	pinMode(led1, OUTPUT);
 	pinMode(led2, OUTPUT);
+}
+
+void setupAnalog() {
+	for (int i = 0; i < MUX_PINS; i++) {
+		analog[i] = new ResponsiveAnalogRead(MZ, true); // initialize
+	}
+}
+
+void setupDigital() {
+	for (int i = 0; i < MUX_PINS; i++) {
+		digital[i] = new Bounce(DZ, bounceTime); // initialize
+	}
 }
 
 void midiCCread(byte channel, byte control, byte value) {
@@ -92,7 +110,7 @@ void midiCCread(byte channel, byte control, byte value) {
 		waveform_select1 = value;
 		break;
 
-	case CCwaveformSelect2: 
+	case CCwaveformSelect2:
 		waveform_select2 = value;
 		break;
 
@@ -118,14 +136,6 @@ void interfaceRead(){
 		digitalWrite(S3, HIGH && (i & B00001000));
 	}
 }
-
-//******ANALOG MULTIPLEXING CODE******//
-void setupAnalog() {
-	for (int i = 0; i < MUX_PINS; i++) {
-		analog[i] = new ResponsiveAnalogRead(MZ, true); // initialize
-	}
-}
-
 
 void muxAnalogRead(){
 	analog[i]->update();
@@ -173,13 +183,6 @@ void muxAnalogRead(){
 				break;
 			}
 		}
-	}
-}
-
-//******DIGITAL MULTIPLEXING CODE******//
-void setupDigital() {
-	for (int i = 0; i < MUX_PINS; i++) {
-		digital[i] = new Bounce(DZ, bounceTime); // initialize
 	}
 }
 
