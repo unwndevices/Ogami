@@ -1,7 +1,7 @@
 #include <Audio.h>
 #include <ResponsiveAnalogRead.h>
 #include <Bounce.h>
-#include "effect_glitchdelay.h"
+#include "src/effect_glitchdelay/effect_glitchdelay.h"
 #include "src/effect_dynamics/effect_dynamics.h"
 
 float value;

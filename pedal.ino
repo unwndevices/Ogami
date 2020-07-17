@@ -3,7 +3,7 @@
 #include <Bounce.h>
 #include "config.h"
 #include "waveforms.h"
-#include "effect_glitchdelay.h"
+#include "src/effect_glitchdelay/effect_glitchdelay.h"
 #include "src/effect_dynamics/effect_dynamics.h"
 
 AudioInputI2S in;                        //xy=136,486
