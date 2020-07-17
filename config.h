@@ -55,60 +55,19 @@
 #define CCglitchHead4 115
 #define CCglitchWet 116
 
-
-
-//setup parameters
-float out_vol = 0.8;
-
-//feedback_mixer
-float dry_gain = 0.8;
-float feedback_gain = 0.2;
-
-//filters
-float lowpass_freq = 15000;
-float highpass_freq = 500;
-//waveshaper parameters
 float ws_warp = 0;
 float ws_drive = 1;
 float ws_arcade = 0;
 
-//waveformsTable size
 int waveform_select1 = 1;
 int waveform_select2 = 2;
 
-//bitcrusher parameters
-int bc_rate = 1;
-int bc_bits = 16;
-
-float drive_wet = 0.6;
-//glitch delay
-float glitch_size = 0.3;
-float glitch_jitter = 0.0;
-float L_glitch_head1 = 0.4;
 float L_glitch_head2 = 0.3;
 float L_glitch_head3 = 0.3;
-float L_glitch_head4 = 0;
 
-float R_glitch_head1 = 0.4;
 float R_glitch_head2 = 0.3;
 float R_glitch_head3 = 0.3;
-float R_glitch_head4 = 0;
 
-float glitch_wet = 0;
-
-//shimmer
-float reverb_size = 0.4;
-float reverb_tone = 0.4;
-const int granular_memory_size = 12800;
-int16_t L_granular_up_memory[granular_memory_size];
-int16_t L_granular_down_memory[granular_memory_size];
-int16_t R_granular_up_memory[granular_memory_size];
-int16_t R_granular_down_memory[granular_memory_size];
-float up_speed = 2;
-float down_speed = 0.5;
-int grain_size = 54;
-float reverb_wet = 0;
-float shimmer_wet = 0;
 
 //rar constants
 const int muxTimeMin = 1000; // minimum micro-seconds between MUX reads
