@@ -94,14 +94,14 @@ public:
     m_size                = 0;
     m_current             = 0;
   }
-  
+
   TYPE average() const
   {
     if( m_size == 0 )
     {
-      return 0;  
+      return 0;
     }
-    
+
     TYPE avg = 0;
     for( int x = 0; x < m_size; ++x )
     {

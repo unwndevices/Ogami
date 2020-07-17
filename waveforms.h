@@ -1,10 +1,11 @@
 #ifndef _Waveforms_h_
 #define _Waveforms_h_
+#include <Arduino.h>
 
 #define max_waveforms 3
 #define max_array_size 65
 
-float newWaveform[65]{
+float newWaveform[max_array_size]{
   -0.964, -0.959, -0.954, -0.948, -0.941,
   -0.934, -0.925, -0.916, -0.905, -0.893,
   -0.88, -0.865, -0.848, -0.83, -0.809,
@@ -63,4 +64,6 @@ float waveformsTable[max_waveforms][max_array_size] = {
   0.95, 0.956, 0.961, 0.966, 0.97
 }
 };
+
+//Waveshaper array morphing
 #endif

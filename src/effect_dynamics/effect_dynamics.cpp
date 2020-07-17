@@ -32,7 +32,7 @@
 #include "utility/sqrt_integer.h"
 
 static float analyse_rms(int16_t *data) {
-	
+
 	uint32_t *p = (uint32_t *)data;
 	const uint32_t *end = p + AUDIO_BLOCK_SAMPLES / 2;
 	int64_t sum = 0;
@@ -45,19 +45,19 @@ static float analyse_rms(int16_t *data) {
 		sum = multiply_accumulate_16tx16t_add_16bx16b(sum, n2, n2);
 		sum = multiply_accumulate_16tx16t_add_16bx16b(sum, n3, n3);
 		sum = multiply_accumulate_16tx16t_add_16bx16b(sum, n4, n4);
-		
+
 	} while (p < end);
-	
+
 	int32_t meansq = sum / AUDIO_BLOCK_SAMPLES;
 	return sqrt_uint32(meansq) / 32767.0f;
 }
 
 static void applyGain(int16_t *data, int32_t mult1, int32_t mult2) {
-	
+
 	uint32_t *p = (uint32_t *)data;
 	const uint32_t *end = p + AUDIO_BLOCK_SAMPLES / 2;
 	int32_t inc = (mult2 - mult1) / (AUDIO_BLOCK_SAMPLES / 2);
-	
+
 	do {
 		uint32_t tmp32 = *p; // read 2 samples from *data
 		int32_t val1 = signed_multiply_32x16b(mult1, tmp32);
@@ -73,26 +73,26 @@ static void applyGain(int16_t *data, int32_t mult1, int32_t mult2) {
 void AudioEffectDynamics::update(void) {
 
 	audio_block_t *block;
-	
+
 	block = receiveWritable(0);
 
 	if (!block) return;
-	
+
 	if (!gateEnabled && !compEnabled && !limiterEnabled) {
-		
+
 		//Transmit & release
 		transmit(block);
 		release(block);
 		return;
 	}
-	
+
 	//Analyze received block
 	float rms = analyse_rms(block->data);
-	
+
 	//Compute block RMS level in Db
 	float inputdb = MIN_DB;
 	if (rms > 0) inputdb = unitToDb(rms);
-	
+
 	//Gate
 	if (gateEnabled) {
 		if (inputdb >= gateThresholdOpen) gatedb = (aGateAttack * gatedb) + (aOneMinusGateAttack * MAX_DB);
@@ -134,11 +134,8 @@ void AudioEffectDynamics::update(void) {
 	//Apply gain to block
 	applyGain(block->data, last_mult, mult);
 	last_mult = mult;
-	
+
 	//Transmit & release
 	transmit(block);
 	release(block);
 }
-
-
-
