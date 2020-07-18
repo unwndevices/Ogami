@@ -33,27 +33,39 @@
 
 
 //CC
-#define CCinGain 96
-#define CCfeedbackGain 97
-#define CClowpassFreq 98
-#define CChighpassFreq 99
+#define CCinGain 80
+#define CClowpassFreq 81
+#define CClowpassRes 82
+#define CChighpassFreq 83
+#define CChighpassRes 84
+#define CCfeedbackGain 85
+#define CClowpassFFreq 86
+#define CClowpassFRes 87
+#define CChighpassFFreq 88
+#define CChighpassFRes 89
+#define CCoutVol 90
 
-#define CCoutVol 100
-#define CCwsWarp 101
-#define CCwaveformSelect1  102
-#define CCwaveformSelect2  103
-#define CCwsDrive 104
-#define CCbcRate 105
-#define CCbcBits 106
-#define CCdriveWet 107
+#define CCwsMorph 95
+#define CCwaveformSelect1  96
+#define CCwaveformSelect2  97
+#define CCwsDrive 98
+#define CCbcRate 99
+#define CCbcBits 100
+#define CCdriveWet 101
 
-#define CCglitchSize 110
-#define CCglitchJitter 111
-#define CCglitchHead1 112
-#define CCglitchHead2 113
-#define CCglitchHead3 114
-#define CCglitchHead4 115
-#define CCglitchWet 116
+#define CCcompThres 105
+#define CCcompRatio 106
+#define CCcompAttk 107
+#define CCcompRel 108
+#define CCcompLimit 109
+
+#define CCglitchSize 111
+#define CCglitchJitter 112
+#define CCglitchHead1 113
+#define CCglitchHead2 114
+#define CCglitchHead3 115
+#define CCglitchHead4 116
+#define CCglitchWet 117
 
 float ws_warp = 0;
 float ws_drive = 1;
@@ -61,6 +73,12 @@ float ws_arcade = 0;
 
 int waveform_select1 = 1;
 int waveform_select2 = 2;
+
+float compThres;
+float compRatio;
+float compAttk;
+float compRel;
+float compLimit;
 
 float L_glitch_head2 = 0.3;
 float L_glitch_head3 = 0.3;

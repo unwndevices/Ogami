@@ -35,83 +35,64 @@ void setupDigital() {
 	}
 }
 
+
 void midiCCread(byte channel, byte control, byte value) {
 	switch (control) {
-	case CCinGain:
-		inGain();
+	case CCinGain:	inGain();
 		break;
 
-	case CCfeedbackGain:
-		feedbackGain();
+	case CCfeedbackGain:	feedbackGain();
 		break;
 
-	case CClowpassFreq:
-		lowpassFreq();
+	case CClowpassFreq: lowpassFreq();
 		break;
 
-	case CChighpassFreq:
-		highpassFreq();
+	case CChighpassFreq:	highpassFreq();
 		break;
 
-
-	case CCoutVol:
-		outVol();
+	case CCoutVol:	outVol();
 		break;
 
-	case CCwsWarp:
-		wsWarp();
+	case CCwsMorph:	wsMorphInt();
 		break;
 
-	case CCwsDrive:
-		wsDrive();
+	case CCwsDrive:	wsDrive();
 		break;
 
-	case CCbcRate:
-		bcRate();
+	case CCbcRate:	bcRate();
 		break;
 
-	case CCbcBits:
-		bcBits();
+	case CCbcBits:	bcBits();
 		break;
 
-	case CCdriveWet:
-		driveWet();
+	case CCdriveWet:	driveWet();
 		break;
 
-	case CCglitchSize:
-		glitchSize();
+	case CCglitchSize:	glitchSize();
 		break;
 
-	case CCglitchJitter:
-		glitchJitter();
+	case CCglitchJitter:	glitchJitter();
 		break;
 
-	case CCglitchHead1:
-		glitchHead1();
+	case CCglitchHead1:	glitchHead1();
 		break;
 
-	case CCglitchHead2:
-		glitchHead2();
+	case CCglitchHead2:	glitchHead2();
 		break;
 
-	case CCglitchHead3:
-		glitchHead3();
+	case CCglitchHead3:	glitchHead3();
 		break;
 
-	case CCglitchHead4:
-		glitchHead4();
+	case CCglitchHead4:	glitchHead4();
 		break;
 
-	case CCglitchWet:
-		glitchWet();
+	case CCglitchWet:	glitchWet();
 		break;
 
-	case CCwaveformSelect1:
-		waveform_select1 = value;
+	case CCwaveformSelect1:	waveform_select1 = value;
 		break;
 
-	case CCwaveformSelect2:
-		waveform_select2 = value;
+	case CCwaveformSelect2:	waveform_select2 = value;
 		break;
 
 

@@ -11,14 +11,14 @@ void inGain(){
 	feedback_mixer.gain(0, value);
 }
 
-void feedbackGain(){
-	value = map((float)value, 0, 127, 0, 7);
-	feedback_mixer.gain(1, value);
-}
-
 void lowpassFreq(){
 	value = map((float)value, 0, 127, 30, 15000);
 	lowpass.frequency(value);
+}
+
+void lowpassRes(){
+	value = map((float)value, 0, 127, 0.7, 1);
+	lowpass.resonance(value);
 }
 
 void highpassFreq(){
@@ -26,21 +26,50 @@ void highpassFreq(){
 	highpass.frequency(value);
 }
 
-void outVol(){
-	value = map((float)value, 0, 127, 0, 1);
-	L_gain.gain(value);
-	R_gain.gain(value);
-
+void highpassRes(){
+	value = map((float)value, 0, 127, 0.7, 1);
+	highpass.resonance(value);
 }
 
-void wsWarp(){
+void feedbackGain(){
+	value = map((float)value, 0, 127, 0, 7);
+	feedback_mixer.gain(1, value);
+}
+
+void lowpassFFreq(){
+	value = map((float)value, 0, 127, 30, 15000);
+	lowpassF.frequency(value);
+}
+
+void lowpassFRes(){
+	value = map((float)value, 0, 127, 0.7, 1);
+	lowpassF.resonance(value);
+}
+
+void highpassFFreq(){
+	value = map((float)value, 0, 127, 30, 15000);
+	highpassF.frequency(value);
+}
+
+void highpassFRes(){
+	value = map((float)value, 0, 127, 0.7, 1);
+	highpassF.resonance(value);
+}
+
+void outVol(){
+	value = map((float)value, 0, 127, 0, 1.7);
+	L_gain.gain(value);
+	R_gain.gain(value);
+}
+
+void wsMorphInt(){
 	ws_warp = map((float)value, 0, 127, 0, 1);
 	wsMorph();
 	waveshaper.shape(newWaveform, 65);
 }
 
 void wsDrive(){
-	ws_drive = map((float)value, 0, 127, 1, 4);
+	ws_drive = map((float)value, 0, 127, 1, 5);
 	wsMorph();
 	waveshaper.shape(newWaveform, 65);
 }
@@ -60,6 +89,9 @@ void driveWet(){
 	drive_mixer.gain(0, value);
 	drive_mixer.gain(1, 1 - value);
 }
+
+
+
 
 void glitchSize(){
 	delay_time = map((float)value, 0, 127, 0, 1);

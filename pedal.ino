@@ -62,7 +62,7 @@ AudioControlSGTL5000 sgtl5000;           //xy=672,1106
 
 void setup() {
 	// patchA1.disconnect(); //disconnect patch cables
-	AudioMemory(32);
+	AudioMemory(22);
 	setupAudio();
 	setupUnwn();
 	//MIDI SETUP
