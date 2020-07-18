@@ -1,7 +1,5 @@
-#pragma once
-
-
-
+#ifndef util_h_
+#define util_h_
 
 /////////////////////////////////////////////////////
 
@@ -55,10 +53,14 @@ T lerp( const T& v1, const T& v2, float t )
 
 /////////////////////////////////////////////////////
 
-int trunc_to_int( float v )
+extern constexpr int trunc_to_int( float v )
 {
   return static_cast<int>( trunc(v) );
 }
+
+
+
+
 
 /////////////////////////////////////////////////////
 
@@ -116,3 +118,4 @@ public:
     return m_size;
   }
 };
+#endif

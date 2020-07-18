@@ -1,7 +1,7 @@
 #include <Audio.h>
 #include <ResponsiveAnalogRead.h>
 #include <Bounce.h>
-#include "effect_glitchdelay.h"
+#include "src/effect_glitchdelay/effect_glitchdelay.h"
 #include "src/effect_dynamics/effect_dynamics.h"
 
 float value;
@@ -62,11 +62,11 @@ void driveWet(){
 }
 
 void glitchSize(){
-	value = map((float)value, 0, 127, 0, 1);
-	glitch.set_loop_size( 0, value);
-	glitch.set_loop_size( 1, value);
-	glitch.set_loop_size( 2, value);
-	glitch.set_loop_size( 3, value);
+	delay_time = map((float)value, 0, 127, 0, 1);
+	glitch.set_loop_size( 0, delay_time);
+	glitch.set_loop_size( 1, delay_time);
+	glitch.set_loop_size( 2, delay_time);
+	glitch.set_loop_size( 3, delay_time);
 }
 
 void glitchJitter(){
@@ -117,7 +117,7 @@ void LFOupdate(float LFOtop, float LFObottom) {
 	static bool LFOdirection = false;
 	unsigned long currentMicros = micros();
 	static float LFOrange = 0;
-
+	unsigned int LFOspeed = delay_time * 30000;
 
 
 	if (currentMicros - LFOtime >= LFOspeed) {

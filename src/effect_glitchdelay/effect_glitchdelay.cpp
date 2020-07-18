@@ -1,4 +1,3 @@
-
 #include <Audio.h>
 #include <Wire.h>
 #include <SPI.h>
@@ -476,7 +475,7 @@ int DELAY_BUFFER::position_offset_from_head( int offset ) const
 
 int DELAY_BUFFER::delay_offset_from_ratio( float ratio_of_max_delay ) const
 {
-	int offset = trunc_to_int( ratio_of_max_delay * ( m_buffer_size_in_samples - AUDIO_BLOCK_SAMPLES ) );
+	int offset =  trunc_to_int( ratio_of_max_delay * ( m_buffer_size_in_samples - AUDIO_BLOCK_SAMPLES ) );
 	return offset;
 }
 

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef effect_glitchdelay_h_
+#define effect_glitchdelay_h_
 
 #include "TeensyJuce.h"
 #include "Util.h"
@@ -170,3 +171,5 @@ public:
 	int                   	num_heads() const;
 	void                  	head_ratio_details( int head, float& loop_start, float& loop_end, float& current_position ) const;
 };
+
+#endif

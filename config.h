@@ -68,6 +68,7 @@ float L_glitch_head3 = 0.3;
 float R_glitch_head2 = 0.3;
 float R_glitch_head3 = 0.3;
 
+float delay_time = 1;
 
 //rar constants
 const int muxTimeMin = 1000; // minimum micro-seconds between MUX reads
@@ -90,6 +91,6 @@ Bounce arcade = Bounce(PINarcade, bounceTime);
 
 
 //------------------LFO-------------------- TO-DO CC//
-unsigned int LFOspeed = 7000;
+unsigned int LFOspeed = 30000;
 float LFOdepth = 0.2;
 float LFOrangeTop = 1;
